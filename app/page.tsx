@@ -106,23 +106,25 @@ const Page = () => {
 			{/* Main content */}
 			<div className="relative flex h-full items-center justify-center">
 				<div className="flex flex-col items-center justify-center">
-					<h1 className={cn(AlexCurve.className, "text-8xl w-[70%] m-auto text-center font-bold text-white")}>Foursquare @70 Business Submit</h1>
+					<h1 className={cn(AlexCurve.className, "md:text-8xl text-5xl md:w-[70%] w-full m-auto text-center font-bold text-white")}>Foursquare @70 Business Submit</h1>
 
-					<div className="flex flex-row items-center justify-center gap-7 mt-5">
-						<Button
-							onPress={handleDownload}
-							isLoading={isDownloading}
-							className="bg-white text-black">
-							Download Report
-						</Button>
-
-						<Button
-							onPress={onOpen}
-							className="bg-white text-black">
-							Read Report Online
-						</Button>
-
-						<Button className="bg-white text-black">Ask Questions</Button>
+					<div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-7 mt-5 w-full">
+						<div className="flex flex-row w-full md:w-auto gap-4 md:gap-7 justify-center">
+							<Button
+								onPress={handleDownload}
+								isLoading={isDownloading}
+								className="bg-white text-black">
+								Download Report
+							</Button>
+							<Button
+								onPress={onOpen}
+								className="bg-white text-black">
+								Read Report Online
+							</Button>
+						</div>
+						<div className="flex w-full md:w-auto justify-center mt-4 md:mt-0">
+							<Button className="bg-white text-black">Ask Questions</Button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -148,13 +150,6 @@ const Page = () => {
 						<div className="flex items-center justify-between w-full">
 							<h1 className="text-lg font-medium">Read Report Online</h1>
 							<div className="flex items-center gap-2">
-								{/* Download from modal */}
-								<Button
-									onPress={handleDownload}
-									isLoading={isDownloading}
-									className="bg-white text-black">
-									Download
-								</Button>
 								{/* Close button uses onOpenChange to toggle */}
 								<Button
 									onPress={() => onOpenChange()}
