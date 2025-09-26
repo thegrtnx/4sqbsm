@@ -4,10 +4,10 @@ import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import { Header } from "@/components/reusables";
+import { Footer, Header } from "@/components/reusables";
 
 export const metadata: Metadata = {
-	title: "Foursquare Business Submmit",
+	title: "Foursquare Business Submit",
 	description: "",
 };
 
@@ -41,6 +41,7 @@ export default function RootLayout({
 					/>
 					<Header />
 					<MaxWidthWrapper>{children}</MaxWidthWrapper>
+					<Footer />
 
 					<Toaster
 						position="top-right"
