@@ -17,6 +17,7 @@ const Page = () => {
 	const timeoutRef = useRef<number | null>(null);
 	const abortControllerRef = useRef<AbortController | null>(null);
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
+	const { isOpen: isOpen2, onOpen: onOpen2, onOpenChange: onOpenChange2 } = useDisclosure();
 
 	useEffect(() => {
 		const updateSize = () => setSize({ width: window.innerWidth, height: window.innerHeight });
@@ -123,7 +124,11 @@ const Page = () => {
 							</Button>
 						</div>
 						<div className="flex w-full md:w-auto justify-center mt-4 md:mt-0">
-							<Button className="bg-white text-black">Ask Questions</Button>
+							<Button
+								onPress={onOpen2}
+								className="bg-white text-black">
+								Ask Questions
+							</Button>
 						</div>
 					</div>
 				</div>
@@ -180,6 +185,23 @@ const Page = () => {
 							</div>
 						</iframe>
 					</div>
+				</ModalContent>
+			</Modal>
+
+			<Modal
+				isOpen={isOpen2}
+				onOpenChange={onOpenChange2}
+				size="5xl"
+				scrollBehavior="inside"
+				backdrop="blur"
+				isKeyboardDismissDisabled={true}
+				isDismissable={false}>
+				<ModalContent className="flex flex-col gap-4 p-0">
+					<ModalHeader>
+						<div className="flex items-center justify-between w-full">
+							<h1 className="text-lg font-medium">Ask Questions</h1>
+						</div>
+					</ModalHeader>
 				</ModalContent>
 			</Modal>
 		</div>
