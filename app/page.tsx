@@ -1,6 +1,42 @@
-import React from "react";
+"use client";
+import { AlexCurve } from "@/lib/font";
+import { cn } from "@/lib/utils";
+import { Button } from "@heroui/react";
+import React, { useState, useEffect } from "react";
+import Confetti from "react-confetti";
 
 const Page = () => {
+	//const [showConfetti, setShowConfetti] = useState(false);
+	const [size, setSize] = useState({ width: 0, height: 0 });
+
+	// useEffect(() => {
+	// 	// Safe to access window here
+	// 	const updateSize = () => setSize({ width: window.innerWidth, height: window.innerHeight });
+
+	// 	updateSize(); // set initial size
+	// 	window.addEventListener("resize", updateSize);
+
+	// 	// Confetti every 5s
+	// 	const interval = setInterval(() => {
+	// 		setShowConfetti(true);
+	// 		setTimeout(() => setShowConfetti(false), 5000);
+	// 	}, 5000);
+
+	// 	return () => {
+	// 		window.removeEventListener("resize", updateSize);
+	// 		clearInterval(interval);
+	// 	};
+	// }, []);
+
+	useEffect(() => {
+		// Update confetti to fill the window
+		const updateSize = () => setSize({ width: window.innerWidth, height: window.innerHeight });
+
+		updateSize(); // set initial size
+		window.addEventListener("resize", updateSize);
+		return () => window.removeEventListener("resize", updateSize);
+	}, []);
+
 	return (
 		<div className="relative h-screen w-screen">
 			{/* Background Image */}
@@ -14,8 +50,32 @@ const Page = () => {
 
 			{/* Content */}
 			<div className="relative flex h-full items-center justify-center">
-				<h1 className="text-4xl font-bold text-white">Foursquare Business Submit</h1>
+				<div className="flex flex-col items-center justify-center">
+					<div>
+						<h1 className={cn(AlexCurve.className, "text-8xl w-[70%] m-auto text-center font-bold text-white")}> Foursquare @70 Business Submit</h1>
+					</div>
+					<div className="flex flex-row items-center justify-center gap-4">
+						<Button>Download Report</Button>
+						<Button>Read Report Online</Button>
+						<Button>Ask Questions</Button>
+					</div>
+				</div>
 			</div>
+
+			{/* Continuous confetti */}
+			<Confetti
+				width={size.width}
+				height={size.height}
+				recycle={true}
+			/>
+
+			{/* Confetti overlay */}
+			{/* {showConfetti && (
+				<Confetti
+					width={size.width}
+					height={size.height}
+				/>
+			)} */}
 		</div>
 	);
 };

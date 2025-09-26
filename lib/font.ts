@@ -11,3 +11,7 @@ export const GeneralSans_Meduim = localFont({
 export const GeneralSans_Regular = localFont({
 	src: "../public/fonts/GeneralSans/WEB/fonts/GeneralSans-Regular.woff",
 });
+
+export const AlexCurve = localFont({
+	src: "../public/fonts/alex.ttf",
+});
