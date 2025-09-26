@@ -24,7 +24,7 @@ const DATA = {
 
 export function Header() {
 	return (
-		<div className="flex sticky top-0 items-center justify-between px-32">
+		<div className="flex fixed w-full top-0 items-center justify-between px-32 z-50">
 			<div>
 				<Image
 					src="/images/logo.webp"
@@ -47,7 +47,7 @@ export function Header() {
 										<Link
 											href={item.href}
 											aria-label={item.label}
-											className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12 rounded-full")}>
+											className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "text-white size-12 rounded-full")}>
 											<item.icon className="size-5" />
 										</Link>
 									</TooltipTrigger>
