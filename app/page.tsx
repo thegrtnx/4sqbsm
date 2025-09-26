@@ -1,8 +1,9 @@
 "use client";
+
 import { showToast } from "@/lib";
 import { AlexCurve } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { Button } from "@heroui/react";
+import { Button, ModalHeader, Modal, ModalContent, useDisclosure } from "@heroui/react";
 import React, { useEffect, useRef, useState } from "react";
 import Confetti from "react-confetti";
 
@@ -15,6 +16,7 @@ const Page = () => {
 	const [isDownloading, setIsDownloading] = useState(false);
 	const timeoutRef = useRef<number | null>(null);
 	const abortControllerRef = useRef<AbortController | null>(null);
+	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	useEffect(() => {
 		const updateSize = () => setSize({ width: window.innerWidth, height: window.innerHeight });
@@ -114,7 +116,12 @@ const Page = () => {
 							Download Report
 						</Button>
 
-						<Button className="bg-white text-black">Read Report Online</Button>
+						<Button
+							onPress={onOpen}
+							className="bg-white text-black">
+							Read Report Online
+						</Button>
+
 						<Button className="bg-white text-black">Ask Questions</Button>
 					</div>
 				</div>
@@ -126,6 +133,60 @@ const Page = () => {
 				height={size.height}
 				recycle
 			/>
+
+			{/* Modal with embedded PDF */}
+			<Modal
+				isOpen={isOpen}
+				onOpenChange={onOpenChange}
+				size="4xl"
+				scrollBehavior="inside"
+				backdrop="blur"
+				isKeyboardDismissDisabled={true}
+				isDismissable={false}>
+				<ModalContent className="flex flex-col gap-4 p-0">
+					<ModalHeader>
+						<div className="flex items-center justify-between w-full">
+							<h1 className="text-lg font-medium">Read Report Online</h1>
+							<div className="flex items-center gap-2">
+								{/* Download from modal */}
+								<Button
+									onPress={handleDownload}
+									isLoading={isDownloading}
+									className="bg-white text-black">
+									Download
+								</Button>
+								{/* Close button uses onOpenChange to toggle */}
+								<Button
+									onPress={() => onOpenChange()}
+									className="bg-white text-black">
+									Close
+								</Button>
+							</div>
+						</div>
+					</ModalHeader>
+
+					{/* PDF viewer area */}
+					<div className="w-full h-[70vh]">
+						{/* iframe will display the PDF inline if the browser supports it.
+							Provide a fallback link in case inline display is blocked. */}
+						<iframe
+							title="2020 Financial Report"
+							src={FILE_PATH}
+							className="w-full h-full border-0">
+							{/* Fallback content */}
+							<div className="p-4 text-center">
+								<p>Your browser does not support inline PDFs. </p>
+								<a
+									href={FILE_PATH}
+									download={FILE_NAME}
+									className="underline">
+									Download the report
+								</a>
+							</div>
+						</iframe>
+					</div>
+				</ModalContent>
+			</Modal>
 		</div>
 	);
 };
