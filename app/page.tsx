@@ -54,10 +54,11 @@ const Page = () => {
 					<div>
 						<h1 className={cn(AlexCurve.className, "text-8xl w-[70%] m-auto text-center font-bold text-white")}> Foursquare @70 Business Submit</h1>
 					</div>
-					<div className="flex flex-row items-center justify-center gap-4">
-						<Button>Download Report</Button>
-						<Button>Read Report Online</Button>
-						<Button>Ask Questions</Button>
+
+					<div className="flex flex-row items-center justify-center gap-7 mt-5">
+						<Button className="bg-white text-black">Download Report</Button>
+						<Button className="bg-white text-black">Read Report Online</Button>
+						<Button className="bg-white text-black">Ask Questions</Button>
 					</div>
 				</div>
 			</div>

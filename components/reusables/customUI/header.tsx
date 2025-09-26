@@ -29,17 +29,17 @@ export function Header() {
 				<Image
 					src="/images/logo.webp"
 					alt="Logo"
-					width={30}
-					height={30}
+					width={40}
+					height={40}
 				/>
 			</div>
 			<div>
 				<TooltipProvider>
 					<Dock direction="middle">
-						<Separator
+						{/*<Separator
 							orientation="vertical"
 							className="h-full"
-						/>
+						/>*/}
 						{DATA.navbar.map((item) => (
 							<DockIcon key={item.label}>
 								<Tooltip>
@@ -57,10 +57,10 @@ export function Header() {
 								</Tooltip>
 							</DockIcon>
 						))}
-						<Separator
+						{/*<Separator
 							orientation="vertical"
 							className="h-full"
-						/>
+						/>*/}
 					</Dock>
 				</TooltipProvider>
 			</div>
