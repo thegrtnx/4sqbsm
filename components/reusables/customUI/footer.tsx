@@ -3,9 +3,9 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<div className="flex bottom-5 w-full fixed bg-transparent px-20 justify-between">
+		<div className="flex bottom-5 w-full fixed bg-transparent md:px-20 px-5 md:justify-between justify-center">
 			<div>
-				<small className="text-white">&copy; Foursquare Gospel Church in Nigeria 2025.</small>
+				<small className="text-white md:block hidden">&copy; Foursquare Gospel Church in Nigeria 2025.</small>
 			</div>
 			<div>
 				<small className="text-white">

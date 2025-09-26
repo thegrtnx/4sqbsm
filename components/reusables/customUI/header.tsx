@@ -24,16 +24,58 @@ const DATA = {
 
 export function Header() {
 	return (
-		<div className="flex fixed w-full top-0 items-center justify-between px-32 z-50">
-			<div>
-				<Image
-					src="/images/logo.webp"
-					alt="Logo"
-					width={40}
-					height={40}
-				/>
+		<>
+			<div className="hidden md:flex fixed w-full top-0 items-center justify-between px-32 z-50">
+				<div>
+					<Image
+						src="/images/logo.webp"
+						alt="Logo"
+						width={40}
+						height={40}
+					/>
+				</div>
+				<div>
+					<TooltipProvider>
+						<Dock direction="middle">
+							{/*<Separator
+							orientation="vertical"
+							className="h-full"
+						/>*/}
+							{DATA.navbar.map((item) => (
+								<DockIcon key={item.label}>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<Link
+												href={item.href}
+												aria-label={item.label}
+												className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "text-white size-12 rounded-full")}>
+												<item.icon className="size-5" />
+											</Link>
+										</TooltipTrigger>
+										<TooltipContent>
+											<p>{item.label}</p>
+										</TooltipContent>
+									</Tooltip>
+								</DockIcon>
+							))}
+							{/*<Separator
+							orientation="vertical"
+							className="h-full"
+						/>*/}
+						</Dock>
+					</TooltipProvider>
+				</div>
+				<div>
+					<Image
+						src="/images/70.png"
+						alt="Logo"
+						width={50}
+						height={50}
+					/>
+				</div>
 			</div>
-			<div>
+
+			<div className="flex md:hidden fixed w-full top-0 items-center justify-between z-50">
 				<TooltipProvider>
 					<Dock direction="middle">
 						{/*<Separator
@@ -64,14 +106,6 @@ export function Header() {
 					</Dock>
 				</TooltipProvider>
 			</div>
-			<div>
-				<Image
-					src="/images/70.png"
-					alt="Logo"
-					width={50}
-					height={50}
-				/>
-			</div>
-		</div>
+		</>
 	);
 }
