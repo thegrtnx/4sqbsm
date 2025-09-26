@@ -138,7 +138,7 @@ const Page = () => {
 			<Modal
 				isOpen={isOpen}
 				onOpenChange={onOpenChange}
-				size="4xl"
+				size="5xl"
 				scrollBehavior="inside"
 				backdrop="blur"
 				isKeyboardDismissDisabled={true}
@@ -166,7 +166,7 @@ const Page = () => {
 					</ModalHeader>
 
 					{/* PDF viewer area */}
-					<div className="w-full h-[70vh]">
+					<div className="w-full h-[80vh]">
 						{/* iframe will display the PDF inline if the browser supports it.
 							Provide a fallback link in case inline display is blocked. */}
 						<iframe
