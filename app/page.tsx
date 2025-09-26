@@ -6,11 +6,11 @@ const Page = () => {
 			{/* Background Image */}
 			<div
 				className="absolute inset-0 bg-cover bg-center"
-				style={{ backgroundImage: "url('/your-background.jpg')" }}
+				style={{ backgroundImage: "url('/images/mobile.jpeg')" }}
 			/>
 
 			{/* Overlay */}
-			<div className="absolute inset-0 bg-black/50" />
+			<div className="absolute inset-0 bg-black/85" />
 
 			{/* Content */}
 			<div className="relative flex h-full items-center justify-center">
