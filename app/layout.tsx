@@ -6,7 +6,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
-	title: "Foursquare Business Submit",
+	title: "Foursquare @70 Business Submit",
 	description: "",
 };
 
