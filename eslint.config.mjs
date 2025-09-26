@@ -1,25 +1,27 @@
+// eslint.config.js
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-});
+const compat = new FlatCompat({ baseDirectory: __dirname });
 
+// Compose config
 const eslintConfig = [
-	// Bring in Next.js + TypeScript defaults
+	// bring in Next.js flat-compatible sets
 	...compat.extends("next/core-web-vitals", "next/typescript"),
 
-	// Add or override rules
+	// register the typescript-eslint plugin and rules
 	{
+		plugins: {
+			// name must match the plugin prefix used in rule IDs
+			"@typescript-eslint": tsPlugin,
+		},
 		rules: {
-			// Disallow `any` type entirely
 			"@typescript-eslint/no-explicit-any": "error",
-
-			// Warn when declared variables aren't used
 			"@typescript-eslint/no-unused-vars": [
 				"warn",
 				{
